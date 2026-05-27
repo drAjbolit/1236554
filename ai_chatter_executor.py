@@ -1,6 +1,12 @@
 import os
 import json
 import re
+import sys
+
+# Принудительно выставляем UTF-8 для стандартных потоков ввода/вывода в Windows
+sys.stdout.reconfigure(encoding='utf-8')
+sys.stderr.reconfigure(encoding='utf-8')
+
 from google import genai
 from google.genai import types
 
@@ -27,7 +33,7 @@ def call_gemini_chancellor(conference_history: list, current_command: str) -> st
 
     # Системная инструкция, задающая жесткую роль Канцлера-Оркестратора
     system_instruction = (
-        "Ты — Канцлер, верховный координатор технического консилиума и правая рука Создателя in Jabber-конференции. "
+        "Ты — Канцлер, верховный координатор технического консилиума и правая рука Создателя в Jabber-конференции. "
         "В твоем подчинении находятся три агента-воркера: ChatGPT, DeepSeek и Qwen. "
         "Твои обязанности:\n"
         "1. Принимать команды от Создателя, декомпозировать их на подзадачи и распределять между воркерами через точные упоминания "
@@ -54,9 +60,6 @@ def call_gemini_chancellor(conference_history: list, current_command: str) -> st
         return f"Ошибка Канцлера (Gemini API): {str(e)}"
 
 def parse_chancellor_decisions(chancellor_output: str):
-    """
-    Анализирует ответ Канцлера для автоматической выдачи подзадач воркерам.
-    """
     tasks = {}
     patterns = {
         'deepseek': r'@deepseek\s+([^@]+)',
