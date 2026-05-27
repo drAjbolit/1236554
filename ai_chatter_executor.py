@@ -3,11 +3,9 @@ import json
 import re
 import sys
 
-# Жесткий фикс кодировок для Windows 10
+# астройка окружения для Windows
 os.environ["PYTHONIOENCODING"] = "utf-8"
-os.environ["PYTHONLEGACYWINDOWSSTDIO"] = "utf-8"
 
-# Если система пытается использовать ascii по умолчанию, переопределяем текстовые потоки
 if sys.stdout.encoding != 'utf-8':
     try:
         sys.stdout.reconfigure(encoding='utf-8')
@@ -18,42 +16,55 @@ if sys.stdout.encoding != 'utf-8':
 from google import genai
 from google.genai import types
 
-# Инициализация клиента Gemini API для Канцлера
+# мпортируем httpx для тонкой настройки прокси
+import httpx
+
+# нициализация клиента Gemini API с поддержкой Tor Proxy (SOCKS5)
 try:
-    gemini_client = genai.Client()
-except Exception:
+    # Указываем ваш Tor-прокси для HTTP и HTTPS трафика
+    tor_proxy = "socks5://127.0.0.1:9050"
+    
+    # Создаем кастомный HTTP-клиент, который пустит трафик через Tor
+    http_client = httpx.Client(
+        proxies={
+            "http://": tor_proxy,
+            "https://": tor_proxy
+        },
+        timeout=30.0
+    )
+    
+    # ередаем этот клиент в SDK Gemini
+    gemini_client = genai.Client(http_client=http_client)
+    print(" одуль анцлера: аршрутизация через Tor (127.0.0.1:9050) настроена.")
+except Exception as e:
+    print(f" е удалось настроить Tor-прокси: {e}")
     gemini_client = None
 
 def call_gemini_chancellor(conference_history: list, current_command: str) -> str:
     """
-    Прямой вызов Канцлера по API с передачей контекста чата Jabber.
+    рямой вызов анцлера по API через Tor-прокси.
     """
     if not gemini_client:
-        return "Ошибка: Переменная среды GEMINI_API_KEY не установлена."
+        return "шибка: API-клиент Gemini не инициализирован."
         
-    context_messages = ["=== ИСТОРИЯ КОНФЕРЕНЦИИ ДЛЯ АНАЛИЗА == WORKERS: ChatGPT, DeepSeek, Qwen ==="]
+    context_messages = ["=== СТ ФЦ   == WORKERS: ChatGPT, DeepSeek, Qwen ==="]
     for msg in conference_history[-40:]:
         author = msg.get('author', 'Участник')
         text = msg.get('text', '')
-        # Принудительно приводим к string и кодируем/декодируем для очистки от левых байтов Windows
-        author_str = str(author).encode('utf-8', errors='ignore').decode('utf-8')
-        text_str = str(text).encode('utf-8', errors='ignore').decode('utf-8')
-        context_messages.append(f"{author_str}: {text_str}")
+        context_messages.append(f"{str(author)}: {str(text)}")
         
-    cmd_str = str(current_command).encode('utf-8', errors='ignore').decode('utf-8')
-    context_messages.append(f"\nНовое прямое указание Создателя: {cmd_str}")
+    context_messages.append(f"\nовое прямое указание Создателя: {str(current_command)}")
 
-    # Системная инструкция, задающая жесткую роль Канцлера-Оркестратора
     system_instruction = (
-        "Ты — Канцлер, верховный координатор технического консилиума и правая рука Создателя в Jabber-конференции. "
-        "В твоем подчинении находятся три агента-воркера: ChatGPT, DeepSeek и Qwen. "
+        "Ты  анцлер, верховный координатор технического консилиума и правая рука Создателя в Jabber-конференции. "
+        " твоем подчинении находятся три агента-воркера: ChatGPT, DeepSeek и Qwen. "
         "Твои обязанности:\n"
-        "1. Принимать команды от Создателя, декомпозировать их на подзадачи и распределять между воркерами через точные упоминания "
+        "1. ринимать команды от Создателя, декомпозировать их на подзадачи и распределять между воркерами через точные упоминания "
         "(например: '@deepseek напиши класс логирования на Python...', '@chatgpt проверь этот код на утечки памяти...').\n"
-        "2. Контролировать обсуждение, не давать воркерам уходить от темы.\n"
-        "3. Проводить арбитраж их ответов, критиковать баги, указывать на галлюцинации.\n"
+        "2. онтролировать обсуждение, не давать воркерам уходить от темы.\n"
+        "3. роводить арбитраж их ответов, критиковать баги, указывать на галлюцинации.\n"
         "4. Формировать для Создателя итоговый чистый результат работы всего консилиума.\n"
-        "Пиши авторитетно, емко, структурированно и строго по делу."
+        "иши авторитетно, емко, структурированно и строго по делу."
     )
 
     config = types.GenerateContentConfig(
@@ -62,7 +73,6 @@ def call_gemini_chancellor(conference_history: list, current_command: str) -> st
     )
 
     try:
-        # Передаем массив строк, явно гарантируя UTF-8 структуру
         response = gemini_client.models.generate_content(
             model='gemini-2.5-flash',
             contents=context_messages,
@@ -70,8 +80,7 @@ def call_gemini_chancellor(conference_history: list, current_command: str) -> st
         )
         return response.text
     except Exception as e:
-        # Если всё равно лезет кодек, выведем дебаг информацию
-        return f"Ошибка Канцлера (Gemini API): {str(e)}"
+        return f"шибка анцлера (Gemini API через Tor): {str(e)}"
 
 def parse_chancellor_decisions(chancellor_output: str):
     tasks = {}
@@ -87,8 +96,7 @@ def parse_chancellor_decisions(chancellor_output: str):
     return tasks
 
 def main_bridge_loop():
-    print("🚀 Python-Бридж ai_chatter успешно запущен...")
-    print("🤖 Канцлер (Gemini API) активен и слушает эфир...")
+    print(" Python-ридж ai_chatter успешно запущен...")
 
 if __name__ == "__main__":
     main_bridge_loop()
