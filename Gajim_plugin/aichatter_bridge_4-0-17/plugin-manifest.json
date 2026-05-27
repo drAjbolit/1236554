@@ -1,0 +1,20 @@
+{
+  "name": "AI Chatter Gajim Plugin",
+  "short_name": "aichatter_bridge",
+  "version": "4.0.15",
+  "description": "AI Chatter Gajim Plugin 4.0.15 Branch 4 MUC self bare-JID dedupe",
+  "authors": [
+    "Mikhail + ChatGPT"
+  ],
+  "homepage": "https://local/ai-chatter",
+  "config_dialog": true,
+  "requirements": [
+    "gajim>=1.0.0"
+  ],
+  "platforms": [
+    "win32",
+    "linux",
+    "darwin",
+    "others"
+  ]
+}

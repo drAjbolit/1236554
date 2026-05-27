@@ -1,0 +1,64 @@
+
+=== AI Chatter R3.1 pending-aware executor launch ===
+pending_count: 3
+limit: 3
+command: "C:\Users\789\AppData\Local\Programs\Python\Python314\python.exe" "C:\AI_chatter\ai_chatter_executor\ai_chatter_run_once.py" --queue "C:\AI_chatter\ai_chatter_tasks.jsonl" --max-tasks 3 --max-jobs 3 --timeout-ms 60000
+workdir: C:\AI_chatter\ai_chatter_executor
+AI Chatter Executor Stage 3.2
+Queue:          C:\AI_chatter\ai_chatter_tasks.jsonl
+Results:        C:\AI_chatter\ai_chatter_results.jsonl
+Config:         C:\AI_chatter\ai_chatter_executor_config.json
+Provider mode:  chrome_bridge
+Processed task 52e13877-6088-42dd-b66d-36e27d2b7a18
+New tasks processed: 1
+New chrome results intaked: 0
+AI Chatter Chrome Bridge Worker Stage 3.13 Tab Agent Observer Rules
+Jobs:    C:\AI_chatter\ai_chatter_chrome_jobs.jsonl
+Results: C:\AI_chatter\ai_chatter_chrome_results.jsonl
+State:   C:\AI_chatter\ai_chatter_chrome_worker_state.json
+CDP:     http://127.0.0.1:9222
+Processed chrome job chromejob-52e13877-6088-42dd-b66d-36e27d2b7a18-chatgpt -> ChatGPT: done
+Processed chrome job chromejob-52e13877-6088-42dd-b66d-36e27d2b7a18-qwen -> Qwen: done
+Processed chrome job chromejob-52e13877-6088-42dd-b66d-36e27d2b7a18-deepseek -> DeepSeek: done
+New chrome jobs processed: 3
+AI Chatter Executor Stage 3.2
+Queue:          C:\AI_chatter\ai_chatter_tasks.jsonl
+Results:        C:\AI_chatter\ai_chatter_results.jsonl
+Config:         C:\AI_chatter\ai_chatter_executor_config.json
+Provider mode:  chrome_bridge
+Intaked chrome result chromeresult-chromejob-52e13877-6088-42dd-b66d-36e27d2b7a18-chatgpt -> ChatGPT
+Intaked chrome result chromeresult-chromejob-52e13877-6088-42dd-b66d-36e27d2b7a18-qwen -> Qwen
+Intaked chrome result chromeresult-chromejob-52e13877-6088-42dd-b66d-36e27d2b7a18-deepseek -> DeepSeek
+New chrome results intaked: 3
+AI Chatter Run Once Stage 3.12
+Folder:     C:\AI_chatter\ai_chatter_executor
+Queue:      C:\AI_chatter\ai_chatter_tasks.jsonl
+CDP:        http://127.0.0.1:9222
+Max tasks:  3
+Max jobs:   3
+Timeout:    60000 ms
+Lock:       C:\AI_chatter\ai_chatter_run_once.lock
+
+==============================================================================
+[AI Chatter] 1/3 Convert Gajim tasks to Chrome jobs
+==============================================================================
+C:\Users\789\AppData\Local\Programs\Python\Python314\python.exe C:\AI_chatter\ai_chatter_executor\ai_chatter_executor.py --queue C:\AI_chatter\ai_chatter_tasks.jsonl --max-tasks 3 --tasks-only
+
+
+==============================================================================
+[AI Chatter] 2/3 Process Chrome jobs with Playwright CDP worker
+==============================================================================
+C:\Users\789\AppData\Local\Programs\Python\Python314\python.exe C:\AI_chatter\ai_chatter_executor\ai_chatter_chrome_bridge_worker.py --jobs C:\AI_chatter\ai_chatter_chrome_jobs.jsonl --max-jobs 3 --timeout-ms 60000 --cdp-url http://127.0.0.1:9222
+
+
+==============================================================================
+[AI Chatter] 3/3 Intake Chrome results into Gajim result queue
+==============================================================================
+C:\Users\789\AppData\Local\Programs\Python\Python314\python.exe C:\AI_chatter\ai_chatter_executor\ai_chatter_executor.py --queue C:\AI_chatter\ai_chatter_tasks.jsonl --intake-bridge-results
+
+
+==============================================================================
+[AI Chatter] Run once complete.
+Next in Gajim: .deliver
+Then check:    .results
+==============================================================================

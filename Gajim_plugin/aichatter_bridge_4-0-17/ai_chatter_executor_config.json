@@ -1,0 +1,35 @@
+{
+  "providerMode": "chrome_bridge",
+  "provider_mode": "chrome_bridge",
+  "bridge_notices": false,
+  "bots": {
+    "chatgpt": {
+      "title": "ChatGPT",
+      "profileKey": "chatgpt::https://chatgpt.com",
+      "provider": "chrome_bridge",
+      "enabled": true
+    },
+    "qwen": {
+      "title": "Qwen",
+      "profileKey": "qwen::https://chat.qwen.ai",
+      "provider": "chrome_bridge",
+      "enabled": true
+    },
+    "deepseek": {
+      "title": "DeepSeek",
+      "profileKey": "deepseek::https://chat.deepseek.com",
+      "provider": "chrome_bridge",
+      "enabled": true
+    }
+  },
+  "chromeBridge": {
+    "jobsFileName": "ai_chatter_chrome_jobs.jsonl",
+    "resultsFileName": "ai_chatter_chrome_results.jsonl",
+    "intakeStateFileName": "ai_chatter_chrome_intake_state.json",
+    "writeBridgeNotificationsToGajimResults": false
+  },
+  "limits": {
+    "maxTasksPerRun": 1,
+    "maxBridgeResultsPerRun": 10
+  }
+}

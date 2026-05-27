@@ -1,0 +1,16 @@
+{
+  "mainRoom": "kuhetaje@chat.yax.im",
+  "chatPanel": true,
+  "commandsKeptForMobile": true,
+  "taskQueue": {
+    "enabled": true,
+    "fileName": "ai_chatter_tasks.jsonl"
+  },
+  "resultDelivery": {
+    "mode": "manual",
+    "fileName": "ai_chatter_results.jsonl",
+    "batchSize": 3
+  },
+  "stage": "2.5.3",
+  "builtFrom": "2.5.2"
+}
