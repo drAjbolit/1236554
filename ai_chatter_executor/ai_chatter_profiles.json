@@ -1,0 +1,311 @@
+{
+  "chatgpt::https://chatgpt.com": {
+    "profileKey": "chatgpt::https://chatgpt.com",
+    "profileName": "ChatGPT",
+    "chatId": "chatgpt",
+    "chatName": "ChatGPT",
+    "origin": "https://chatgpt.com",
+    "urlMatch": "https://chatgpt.com/*",
+    "title": "ChatGPT",
+    "enabled": true,
+    "version": 3,
+    "createdAt": 1779528589537,
+    "updatedAt": 1779729539598,
+    "lastUrl": "https://chatgpt.com/*",
+    "notes": "ChatGPT profile adapter. Input is #prompt-textarea. Send is button[data-testid='send-button'] / #composer-submit-button. A completed assistant answer has an action group labelled 'Действия с ответом' with buttons: copy answer, good response, bad response, share, try again/change model, more actions. The answer text is inside the assistant message .markdown block.",
+    "input": {
+      "selector": "#prompt-textarea",
+      "fallbackSelector": "textarea[name=\"prompt-textarea\"], div#prompt-textarea[contenteditable=\"true\"]",
+      "method": "marker_scan",
+      "marker": "test***",
+      "detectedAt": 1779528589537
+    },
+    "send": {
+      "selector": "button[data-testid=\"send-button\"], button#composer-submit-button",
+      "method": "chatgpt_send_button",
+      "inputSelector": "#prompt-textarea",
+      "strategy": {
+        "description": "Click ChatGPT composer submit button. Prefer data-testid='send-button', fallback to #composer-submit-button.",
+        "buttonSelector": "button[data-testid=\"send-button\"], button#composer-submit-button",
+        "enabledCheck": "not disabled and visible"
+      },
+      "detectedAt": 1779528589537
+    },
+    "response": {
+      "assistantMessageSelector": "[data-message-author-role=\"assistant\"]",
+      "assistantMessageFilter": ".markdown",
+      "messageTextSelector": "[data-message-author-role=\"assistant\"] .markdown, [data-message-author-role=\"assistant\"]",
+      "generationDoneRule": "response_end_marker_appeared",
+      "endMarker": {
+        "selector": "[aria-label=\"Действия с ответом\"][role=\"group\"]",
+        "method": "chatgpt_action_row",
+        "meaning": "generation_finished",
+        "appearsOnlyAfterFinish": true,
+        "requiresHover": false,
+        "buttons": [
+          "copy",
+          "good",
+          "bad",
+          "share",
+          "try_again",
+          "more"
+        ],
+        "tooltipLabels": [
+          "Копировать ответ",
+          "Хороший ответ",
+          "Плохой ответ",
+          "Поделиться",
+          "Попробуйте ещё раз",
+          "Больше действий"
+        ],
+        "strategy": {
+          "description": "Find assistant messages with data-message-author-role='assistant' and treat the answer as finished when the answer action group appears.",
+          "messageSelector": "[data-message-author-role=\"assistant\"]",
+          "textSelector": ".markdown",
+          "actionRowSelector": "[aria-label=\"Действия с ответом\"][role=\"group\"]",
+          "actionButtonSelector": "button, [role=\"button\"]",
+          "requiredSelectorsAny": [
+            "button[data-testid=\"copy-turn-action-button\"]",
+            "button[data-testid=\"good-response-turn-action-button\"]",
+            "button[data-testid=\"bad-response-turn-action-button\"]",
+            "button[aria-label=\"Копировать ответ\"]"
+          ],
+          "minActionButtons": 5
+        },
+        "detectedAt": 1779528589537
+      }
+    },
+    "runtime": {
+      "preferEnter": false,
+      "useAhkFallback": false,
+      "adapter": "chatgpt"
+    },
+    "calibration": {
+      "lastAction": "import_chatgpt_adapter_profile",
+      "lastStatus": "success",
+      "lastAt": 1779528589537,
+      "mergedAt": "r3.5.8",
+      "mergeSource": "executor_3_5_5_provider_session_reset"
+    },
+    "session": {
+      "managed": true,
+      "markSessionStorage": true,
+      "resetOnProviderThreadBroken": true,
+      "forceStartUrlEveryJob": false,
+      "startUrl": "https://chatgpt.com/",
+      "sessionPolicy": "sticky_with_rollover",
+      "memoryHandoff": true,
+      "handoffBeforeRollover": true,
+      "injectSummaryIntoNewChat": true,
+      "closeOldChatAfterSuccessfulHandoff": false,
+      "maxSessionAgeMinutes": 180,
+      "maxMessagesPerSession": 40,
+      "directChatTitle": "AI Chatter ChatGPT Direct",
+      "circleChatTitle": "AI Chatter ChatGPT Circle"
+    }
+  },
+  "qwen::https://chat.qwen.ai": {
+    "profileKey": "qwen::https://chat.qwen.ai",
+    "profileName": "Qwen",
+    "chatId": "qwen",
+    "chatName": "Qwen",
+    "origin": "https://chat.qwen.ai",
+    "urlMatch": "https://chat.qwen.ai/*",
+    "title": "Qwen Studio",
+    "enabled": true,
+    "version": 3,
+    "createdAt": 1779528355817,
+    "updatedAt": 1779729539598,
+    "lastUrl": "https://chat.qwen.ai/*",
+    "notes": "Qwen profile adapter. Input is textarea.message-input-textarea. Send is button.send-button. A completed assistant answer has a response footer with action buttons: copy, good, bad, share, regenerate, more. Answer text is inside .response-message-content .custom-qwen-markdown / .qwen-markdown.",
+    "input": {
+      "selector": "textarea.message-input-textarea",
+      "fallbackSelector": "textarea[placeholder=\"Чем я могу помочь вам сегодня?\"]",
+      "method": "marker_scan",
+      "marker": "test***",
+      "detectedAt": 1779528355817
+    },
+    "send": {
+      "selector": "button.send-button",
+      "method": "qwen_send_button",
+      "inputSelector": "textarea.message-input-textarea",
+      "strategy": {
+        "description": "Click button.send-button near the message input composer.",
+        "composerSelector": ".message-input-container",
+        "buttonSelector": "button.send-button"
+      },
+      "detectedAt": 1779528355817
+    },
+    "response": {
+      "assistantMessageSelector": ".qwen-chat-message.qwen-chat-message-assistant",
+      "assistantMessageFilter": ".response-message-content",
+      "messageTextSelector": ".response-message-content .custom-qwen-markdown, .response-message-content .qwen-markdown, .response-message-content",
+      "generationDoneRule": "response_end_marker_appeared",
+      "endMarker": {
+        "selector": ".response-message-footer .qwen-chat-package-comp-new-action-control-icons",
+        "method": "qwen_action_row",
+        "meaning": "generation_finished",
+        "appearsOnlyAfterFinish": true,
+        "requiresHover": false,
+        "buttons": [
+          "copy",
+          "good",
+          "bad",
+          "share",
+          "regenerate",
+          "more"
+        ],
+        "tooltipLabels": [
+          "Копировать",
+          "Хороший ответ",
+          "Плохой ответ",
+          "Поделиться",
+          "Сгенерировать заново",
+          "Больше действий"
+        ],
+        "strategy": {
+          "description": "Find assistant messages with .response-message-content and treat the answer as finished when the footer action row contains copy/good/bad/share/regenerate/more controls.",
+          "messageSelector": ".qwen-chat-message.qwen-chat-message-assistant",
+          "textSelector": ".response-message-content .custom-qwen-markdown, .response-message-content .qwen-markdown, .response-message-content",
+          "actionRowSelector": ".response-message-footer .qwen-chat-package-comp-new-action-control-icons",
+          "actionButtonSelector": ".qwen-chat-package-comp-new-action-control-container",
+          "requiredClasses": [
+            "qwen-chat-package-comp-new-action-control-container-copy",
+            "qwen-chat-package-comp-new-action-control-container-good",
+            "qwen-chat-package-comp-new-action-control-container-bad",
+            "qwen-chat-package-comp-new-action-control-container-share",
+            "qwen-chat-package-comp-new-action-control-container-regenerate"
+          ],
+          "minActionButtons": 6
+        },
+        "detectedAt": 1779528355817
+      }
+    },
+    "runtime": {
+      "preferEnter": false,
+      "useAhkFallback": false,
+      "adapter": "qwen"
+    },
+    "calibration": {
+      "lastAction": "import_qwen_adapter_profile",
+      "lastStatus": "success",
+      "lastAt": 1779528355817,
+      "mergedAt": "r3.5.8",
+      "mergeSource": "executor_3_5_5_provider_session_reset"
+    },
+    "session": {
+      "managed": true,
+      "markSessionStorage": true,
+      "resetOnProviderThreadBroken": true,
+      "forceStartUrlEveryJob": false,
+      "startUrl": "https://chat.qwen.ai/",
+      "invalidThreadPatterns": [
+        "Invalid input chat parent_id",
+        "parent_id",
+        "is not exist"
+      ],
+      "notes": "Qwen can keep a stale/deleted parent_id in an old chat. On this provider-thread error, executor resets the provider page to startUrl and retries once.",
+      "sessionPolicy": "sticky_with_rollover",
+      "memoryHandoff": true,
+      "handoffBeforeRollover": true,
+      "injectSummaryIntoNewChat": true,
+      "closeOldChatAfterSuccessfulHandoff": false,
+      "maxSessionAgeMinutes": 120,
+      "maxMessagesPerSession": 30,
+      "freshChatOnParentError": true,
+      "directChatTitle": "AI Chatter Qwen Direct",
+      "circleChatTitle": "AI Chatter Qwen Circle"
+    }
+  },
+  "deepseek::https://chat.deepseek.com": {
+    "profileKey": "deepseek::https://chat.deepseek.com",
+    "profileName": "DeepSeek",
+    "chatId": "deepseek",
+    "chatName": "DeepSeek",
+    "origin": "https://chat.deepseek.com",
+    "urlMatch": "https://chat.deepseek.com/*",
+    "title": "DeepSeek",
+    "enabled": true,
+    "version": 3,
+    "createdAt": 1779527369629,
+    "updatedAt": 1779729539598,
+    "lastUrl": "https://chat.deepseek.com/*",
+    "notes": "DeepSeek profile adapter. Input is textarea[name='search']. Send should be resolved relative to the composer: find textarea[name='search'], then find the last enabled [role='button'].ds-icon-button--l inside the composer. Generation is complete when the assistant message has an action row with Copy, Regenerate, Like, Dislike, Share.",
+    "input": {
+      "selector": "textarea[name=\"search\"]",
+      "method": "marker_scan",
+      "marker": "test***",
+      "detectedAt": 1779528169121
+    },
+    "send": {
+      "selector": "[role=\"button\"].ds-icon-button--l[aria-disabled=\"false\"]",
+      "method": "deepseek_composer_send_button",
+      "inputSelector": "textarea[name=\"search\"]",
+      "strategy": {
+        "description": "Resolve send button from the composer that contains textarea[name='search']; click the last enabled large icon button.",
+        "composerFromInput": true,
+        "buttonSelector": "[role=\"button\"].ds-icon-button--l",
+        "enabledAttribute": "aria-disabled",
+        "enabledValueNot": "true",
+        "pick": "last"
+      },
+      "detectedAt": 1779528169121
+    },
+    "response": {
+      "assistantMessageSelector": "[data-virtual-list-item-key]",
+      "assistantMessageFilter": ".ds-assistant-message-main-content",
+      "messageTextSelector": ".ds-assistant-message-main-content",
+      "generationDoneRule": "response_end_marker_appeared",
+      "endMarker": {
+        "selector": "[data-virtual-list-item-key] [role=\"button\"]",
+        "method": "deepseek_action_row",
+        "meaning": "generation_finished",
+        "appearsOnlyAfterFinish": true,
+        "requiresHover": false,
+        "buttons": [
+          "copy",
+          "regenerate",
+          "like",
+          "dislike",
+          "share"
+        ],
+        "strategy": {
+          "description": "Find assistant messages with .ds-assistant-message-main-content and treat the answer as finished when its action row appears.",
+          "messageSelector": "[data-virtual-list-item-key]",
+          "textSelector": ".ds-assistant-message-main-content",
+          "actionButtonSelector": "[role=\"button\"], button",
+          "minActionButtons": 5
+        },
+        "detectedAt": 1779528169121
+      }
+    },
+    "runtime": {
+      "preferEnter": false,
+      "useAhkFallback": false,
+      "adapter": "deepseek"
+    },
+    "calibration": {
+      "lastAction": "import_deepseek_adapter_profile",
+      "lastStatus": "success",
+      "lastAt": 1779528169121,
+      "mergedAt": "r3.5.8",
+      "mergeSource": "executor_3_5_5_provider_session_reset"
+    },
+    "session": {
+      "managed": true,
+      "markSessionStorage": true,
+      "resetOnProviderThreadBroken": true,
+      "forceStartUrlEveryJob": false,
+      "startUrl": "https://chat.deepseek.com/",
+      "sessionPolicy": "sticky_with_rollover",
+      "memoryHandoff": true,
+      "handoffBeforeRollover": true,
+      "injectSummaryIntoNewChat": true,
+      "closeOldChatAfterSuccessfulHandoff": false,
+      "maxSessionAgeMinutes": 180,
+      "maxMessagesPerSession": 40,
+      "directChatTitle": "AI Chatter DeepSeek Direct",
+      "circleChatTitle": "AI Chatter DeepSeek Circle"
+    }
+  }
+}

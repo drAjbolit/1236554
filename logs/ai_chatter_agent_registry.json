@@ -1,0 +1,37 @@
+{
+  "schema": "ai_chatter.agent_registry.v1",
+  "stage": "r2.6",
+  "agents": {
+    "vova": {
+      "jid": "vova_gpt@yax.im",
+      "aliases": [
+        "Вова",
+        "vova",
+        "chatgpt",
+        "vova_gpt"
+      ],
+      "enabled": true,
+      "provider": "chatgpt"
+    },
+    "qwen": {
+      "jid": "qwen_agent@yax.im",
+      "aliases": [
+        "Qwen",
+        "Квен",
+        "qwen_agent"
+      ],
+      "enabled": true,
+      "provider": "qwen"
+    },
+    "deepseek": {
+      "jid": "deepseek_agent@yax.im",
+      "aliases": [
+        "DeepSeek",
+        "Дипсик",
+        "deepseek_agent"
+      ],
+      "enabled": true,
+      "provider": "deepseek"
+    }
+  }
+}

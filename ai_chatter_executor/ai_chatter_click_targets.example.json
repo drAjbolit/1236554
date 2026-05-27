@@ -1,0 +1,8 @@
+{
+  "deepseek": {
+    "mode": "window_ratio",
+    "ratioX": 0.949,
+    "ratioY": 0.908,
+    "note": "Example only. Run ai_chatter_capture_click_target.py to calibrate your own screen."
+  }
+}

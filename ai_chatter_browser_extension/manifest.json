@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "AI Chatter Browser Extension",
+  "description": "AI Chatter Branch 4.0.17 Qwen + DeepSeek provider workers",
+  "version": "4.0.17",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAspRrZq/U0fxrbCc32GbAzydtQ8ZFS7c+IZNpYiCm384cfA6RJSUtX3vtCVnnAWkUhj08F2g8b86Zs7Y26UjG6baYoEBwD37yu4MFfODL0QtbjkOLb1Lc22v+ufjMdxMKxVJH1pkkloQy2/r/BlrqVuaxyp23QnnJK8aECv7wFEYBLQb7AIHloqgmQBc/ir1SRPubLdUIzGQM2qm2f2vPL35X/+/eYPtuFzwuFagoO1hCgujIky3n+bqrLorHZCd45l2WJveF+X5baMErLXzPXgua1YDjYohg332BZMoBDo201LyWmki+VtUOuswrzkIt9NIJ11iLDWOCrE4eeRx0HQIDAQAB",
+  "permissions": [
+    "nativeMessaging",
+    "storage",
+    "tabs",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "AI Chatter 4",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

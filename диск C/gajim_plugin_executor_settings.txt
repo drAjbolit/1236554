@@ -1,0 +1,21 @@
+Вставить в настройки AI Chatter Bridge / Gajim plugin:
+
+Executor command:
+C:\Users\789\AppData\Local\Programs\Python\Python314\python.exe C:\AI_chatter\ai_chatter_executor\ai_chatter_run_once.py --queue "{queue}" --max-tasks 1 --max-jobs 1 --timeout-ms 60000
+
+Executor workdir:
+C:\AI_chatter\ai_chatter_executor
+
+Chrome CDP URL:
+http://127.0.0.1:9222
+
+Auto-run executor:
+enabled / включено
+
+Offline behavior:
+silent
+
+Пояснение:
+- Не использовать просто "python", потому что на новом ПК он попал в Inkscape Python.
+- Путь к Python должен быть полный.
+- Путь к executor теперь C:\AI_chatter\..., не G:\AI_chatter\...

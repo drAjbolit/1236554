@@ -1,0 +1,25 @@
+{
+  "tasks": {
+    "3cd59490-00b4-4cf4-b897-d25a987fb445": {
+      "jobId": "ee694514-044e-4784-aaff-e924830b8ca2",
+      "agentId": "vova",
+      "provider": "chatgpt",
+      "agentJid": "vova_gpt@yax.im",
+      "agentAccount": "yax.im1",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Вова тест",
+      "payloadText": "тест"
+    },
+    "41adb4f2-25ec-45ad-961a-6940497339e6": {
+      "jobId": "0266c26c-12fd-47df-94be-d9b235bedb4e",
+      "agentId": "qwen",
+      "provider": "qwen",
+      "agentJid": "qwen_agent@yax.im",
+      "agentAccount": "yax.im12",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Квен, тест",
+      "payloadText": "тест"
+    }
+  },
+  "updatedAt": "2026-05-25T15:52:54.923175+00:00"
+}

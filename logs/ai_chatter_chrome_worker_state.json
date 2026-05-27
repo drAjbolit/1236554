@@ -1,0 +1,24 @@
+{
+  "processedJobIds": [
+    "chromejob-06dd7c5b-c976-4318-846c-6ec76f73454d-chatgpt",
+    "chromejob-06dd7c5b-c976-4318-846c-6ec76f73454d-deepseek",
+    "chromejob-06dd7c5b-c976-4318-846c-6ec76f73454d-qwen",
+    "chromejob-34c619dc-deb7-460e-902a-1a06241eaf47-qwen",
+    "chromejob-3cd59490-00b4-4cf4-b897-d25a987fb445-chatgpt",
+    "chromejob-41adb4f2-25ec-45ad-961a-6940497339e6-qwen",
+    "chromejob-5e0eb7c6-6948-4cb0-9907-a21e5e408115-qwen",
+    "chromejob-60aceccb-3c25-4b57-bab3-82fd9e01b488-deepseek",
+    "chromejob-6463518f-8444-40f6-9961-2ae9efa0682b-qwen",
+    "chromejob-75e7c210-6925-46a3-adfc-0d02bb45626c-qwen",
+    "chromejob-828d4ec8-9596-4f82-a569-c30cd5bb912e-qwen",
+    "chromejob-9198f3ad-84a8-4462-853e-b47499ef9c7b-chatgpt",
+    "chromejob-9198f3ad-84a8-4462-853e-b47499ef9c7b-deepseek",
+    "chromejob-9198f3ad-84a8-4462-853e-b47499ef9c7b-qwen",
+    "chromejob-9a27640a-4f67-42cd-a217-83e1e9b2df0d-qwen",
+    "chromejob-9d8511bd-d4f0-481c-8e75-d66e8e47e26c-qwen",
+    "chromejob-b3c4d261-ee37-498c-a31c-378df0089afc-qwen",
+    "chromejob-ee41f71b-a1ec-479e-9f0a-07d4f3f1f588-qwen",
+    "chromejob-fc009570-58a7-46e9-bf6c-d48855f46f31-deepseek"
+  ],
+  "updatedAt": "2026-05-25T20:39:21.992440+00:00"
+}

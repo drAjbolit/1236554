@@ -1,0 +1,26 @@
+Как сделать универсально в будущем
+
+1. В Gajim-плагине добавить поля:
+   - Python executable
+   - AI Chatter home
+   - Executor dir
+   - Executor command
+   - Auto-detect button
+
+2. Auto-detect button должна искать:
+   - py -0p
+   - python.exe в PATH
+   - C:\Users\<user>\AppData\Local\Programs\Python\Python314\python.exe
+   - C:\AI_chatter\ai_chatter_executor
+   - C:\AI_chatter\start_ai_chatter_chrome_cdp.bat
+
+3. Команду строить из шаблона:
+   "{python_exe}" "{executor_dir}\ai_chatter_run_once.py" --queue "{queue}" --max-tasks 1 --max-jobs 1 --timeout-ms 60000
+
+4. Пути хранить в настройках плагина, а не хардкодить.
+
+5. Для переносимости можно ввести переменную:
+   AI_CHATTER_HOME=C:\AI_chatter
+
+6. Таймеры не использовать.
+   Запуск executor — только по событию новой задачи.

@@ -1,0 +1,5 @@
+Ручная команда run_once:
+
+cd C:\AI_chatter\ai_chatter_executor
+
+C:\Users\789\AppData\Local\Programs\Python\Python314\python.exe .\ai_chatter_run_once.py --queue "$env:APPDATA\Gajim\Plugins\aichatter_bridge\ai_chatter_tasks.jsonl" --max-tasks 1 --max-jobs 1 --timeout-ms 60000

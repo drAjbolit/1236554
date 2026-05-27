@@ -1,0 +1,7 @@
+
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 
+
+
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\AI_chatter\chrome-cdp-profile" https://chatgpt.com/
+
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="G:\AI_chatter\chrome-cdp-profile" https://chatgpt.com/

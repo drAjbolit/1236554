@@ -1,0 +1,9 @@
+{
+  "name": "ai_chatter.native_host",
+  "description": "AI Chatter Branch 4 Native Messaging Host",
+  "path": "G:\\AI_chatter\\ai_chatter_native_host\\ai_chatter_native_host.bat",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://kgdgnnlkagfboekpanbjbjiijonhbmhj/"
+  ]
+}

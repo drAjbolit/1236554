@@ -1,0 +1,115 @@
+{
+  "tasks": {
+    "9d8511bd-d4f0-481c-8e75-d66e8e47e26c": {
+      "jobId": "660b8661-23f8-4652-9194-cedadd99eb3c",
+      "agentId": "qwen",
+      "provider": "qwen",
+      "agentJid": "qwen_qwen@yax.im",
+      "agentAccount": "yax.im12",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Квен, тест 346",
+      "payloadText": "тест 346"
+    },
+    "60aceccb-3c25-4b57-bab3-82fd9e01b488": {
+      "jobId": "dc7caa70-3209-475c-9a40-5e3a6b43dfb5",
+      "agentId": "deepseek",
+      "provider": "deepseek",
+      "agentJid": "siroza_deepseek@yax.im",
+      "agentAccount": "yax.im123",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Дипсик, тест 346",
+      "payloadText": "тест 346"
+    },
+    "828d4ec8-9596-4f82-a569-c30cd5bb912e": {
+      "jobId": "c2d8da58-5a62-4dfc-971d-84fcc962c123",
+      "agentId": "qwen",
+      "provider": "qwen",
+      "agentJid": "qwen_qwen@yax.im",
+      "agentAccount": "yax.im12",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Квен, тест 346",
+      "payloadText": "тест 346"
+    },
+    "fc009570-58a7-46e9-bf6c-d48855f46f31": {
+      "jobId": "71cdf833-7934-4f26-b011-1a137379fb51",
+      "agentId": "deepseek",
+      "provider": "deepseek",
+      "agentJid": "siroza_deepseek@yax.im",
+      "agentAccount": "yax.im123",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Дипсик, тест 346",
+      "payloadText": "тест 346"
+    },
+    "34c619dc-deb7-460e-902a-1a06241eaf47": {
+      "jobId": "88863beb-8d51-4767-a6d5-d08db21c060c",
+      "agentId": "qwen",
+      "provider": "qwen",
+      "agentJid": "qwen_qwen@yax.im",
+      "agentAccount": "yax.im12",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Квен, тест 347",
+      "payloadText": "тест 347"
+    },
+    "b3c4d261-ee37-498c-a31c-378df0089afc": {
+      "jobId": "b0b2bd98-6ce2-4647-b01e-2227c534cf7b",
+      "agentId": "qwen",
+      "provider": "qwen",
+      "agentJid": "qwen_qwen@yax.im",
+      "agentAccount": "yax.im12",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Квен, тест 348",
+      "payloadText": "тест 348"
+    },
+    "9a27640a-4f67-42cd-a217-83e1e9b2df0d": {
+      "jobId": "20ad2323-2c75-4090-a772-e9a89194df57",
+      "agentId": "qwen",
+      "provider": "qwen",
+      "agentJid": "qwen_qwen@yax.im",
+      "agentAccount": "yax.im12",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Квен, тест 349",
+      "payloadText": "тест 349"
+    },
+    "6463518f-8444-40f6-9961-2ae9efa0682b": {
+      "jobId": "b15f10e4-f189-4043-97cb-bf3598a41b35",
+      "agentId": "qwen",
+      "provider": "qwen",
+      "agentJid": "qwen_qwen@yax.im",
+      "agentAccount": "yax.im12",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Квен, тест 350",
+      "payloadText": "тест 350"
+    },
+    "ee41f71b-a1ec-479e-9f0a-07d4f3f1f588": {
+      "jobId": "a00f8a08-9310-4d79-aee7-d917d17a6c3d",
+      "agentId": "qwen",
+      "provider": "qwen",
+      "agentJid": "qwen_qwen@yax.im",
+      "agentAccount": "yax.im12",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Квен, тест 351",
+      "payloadText": "тест 351"
+    },
+    "75e7c210-6925-46a3-adfc-0d02bb45626c": {
+      "jobId": "9c3a63ad-7d41-43d4-8cd4-089da8306556",
+      "agentId": "qwen",
+      "provider": "qwen",
+      "agentJid": "qwen_qwen@yax.im",
+      "agentAccount": "yax.im12",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Квен, тест 352",
+      "payloadText": "тест 352"
+    },
+    "5e0eb7c6-6948-4cb0-9907-a21e5e408115": {
+      "jobId": "60960f30-1ddd-43f0-9ee3-a37323d6bba0",
+      "agentId": "qwen",
+      "provider": "qwen",
+      "agentJid": "qwen_qwen@yax.im",
+      "agentAccount": "yax.im12",
+      "roomJid": "kuhetaje@chat.yax.im",
+      "inputText": "Квен, тест 353",
+      "payloadText": "тест 353"
+    }
+  },
+  "updatedAt": "2026-05-25T17:36:10.902126+00:00"
+}
