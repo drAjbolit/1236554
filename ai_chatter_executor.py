@@ -3,9 +3,17 @@ import json
 import re
 import sys
 
-# Принудительно выставляем UTF-8 для стандартных потоков ввода/вывода в Windows
-sys.stdout.reconfigure(encoding='utf-8')
-sys.stderr.reconfigure(encoding='utf-8')
+# Жесткий фикс кодировок для Windows 10
+os.environ["PYTHONIOENCODING"] = "utf-8"
+os.environ["PYTHONLEGACYWINDOWSSTDIO"] = "utf-8"
+
+# Если система пытается использовать ascii по умолчанию, переопределяем текстовые потоки
+if sys.stdout.encoding != 'utf-8':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except AttributeError:
+        pass
 
 from google import genai
 from google.genai import types
@@ -27,9 +35,13 @@ def call_gemini_chancellor(conference_history: list, current_command: str) -> st
     for msg in conference_history[-40:]:
         author = msg.get('author', 'Участник')
         text = msg.get('text', '')
-        context_messages.append(f"{author}: {text}")
+        # Принудительно приводим к string и кодируем/декодируем для очистки от левых байтов Windows
+        author_str = str(author).encode('utf-8', errors='ignore').decode('utf-8')
+        text_str = str(text).encode('utf-8', errors='ignore').decode('utf-8')
+        context_messages.append(f"{author_str}: {text_str}")
         
-    context_messages.append(f"\nНовое прямое указание Создателя: {current_command}")
+    cmd_str = str(current_command).encode('utf-8', errors='ignore').decode('utf-8')
+    context_messages.append(f"\nНовое прямое указание Создателя: {cmd_str}")
 
     # Системная инструкция, задающая жесткую роль Канцлера-Оркестратора
     system_instruction = (
@@ -50,6 +62,7 @@ def call_gemini_chancellor(conference_history: list, current_command: str) -> st
     )
 
     try:
+        # Передаем массив строк, явно гарантируя UTF-8 структуру
         response = gemini_client.models.generate_content(
             model='gemini-2.5-flash',
             contents=context_messages,
@@ -57,6 +70,7 @@ def call_gemini_chancellor(conference_history: list, current_command: str) -> st
         )
         return response.text
     except Exception as e:
+        # Если всё равно лезет кодек, выведем дебаг информацию
         return f"Ошибка Канцлера (Gemini API): {str(e)}"
 
 def parse_chancellor_decisions(chancellor_output: str):
